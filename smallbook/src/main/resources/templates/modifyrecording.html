@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+
+<head>
+    <meta charset="UTF-8">
+    <title>主页面</title>
+    <link rel="stylesheet" href="./xadmin/css/font.css">
+    <link rel="stylesheet" href="./xadmin/css/xadmin.css">
+    <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+    <script type="text/javascript" src="./jquery/jquery-3.3.1.js"></script>
+    <script src="./xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script src="./scripts/main.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./xadmin/js/xadmin.js"></script>
+</head>
+    <body>
+        <div class="layui-fluid">
+            <div class="layui-row">
+                <div class="layui-form">
+                  <div class="layui-form-item">
+                      <label for="date" class="layui-form-label">
+                          <span class="x-red">*</span><span ondblclick="">日期</span>
+                      </label>
+                      <div class="layui-input-inline">
+                          <input type="text" id="date" name="date" required="" lay-verify="required"
+                          autocomplete="off" class="layui-input" ondblclick="getNowFormatDate()">
+                        
+                      </div>
+                      <button  class="layui-btn" onclick="getrecordingbyday()">
+                            获取数据
+                        </button>
+                     
+                  </div>
+                  <div class="layui-form-item">
+                      <label for="ordering" class="layui-form-label">
+                          <span class="x-red">*</span>预定
+                      </label>
+                      <div class="layui-input-inline">
+                          <input type="text" id="ordering" name="ordering" required="" lay-verify="number"
+                          autocomplete="off" class="layui-input" value="0">
+                      </div>
+                  </div>
+                   <div class="layui-form-item">
+                        <label for="menber" class="layui-form-label">
+                            <span class="x-red">*</span>会员
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="menber" name="menber" required="" lay-verify="number"
+                            autocomplete="off" class="layui-input" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="layui-form-item">
+                            <label for="dine" class="layui-form-label">
+                                <span class="x-red">*</span>堂食
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="dine" name="dine" required="" lay-verify="number"
+                                autocomplete="off" class="layui-input" value="0">
+                            </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                            <label for="takeaway" class="layui-form-label">
+                                <span class="x-red">*</span>外供
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="takeaway" name="takeaway" required="" lay-verify="number"
+                                autocomplete="off" class="layui-input" value="0">
+                            </div>
+                     </div>
+
+                     <div class="layui-form-item">
+                            <label for="pay" class="layui-form-label">
+                                <span class="x-red">*</span>支出
+                            </label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="pay" name="pay" required="" lay-verify="number"
+                                autocomplete="off" class="layui-input" value="0">
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                            <label for="profit" class="layui-form-label">
+                                <span class="x-red"></span>利润:
+                            </label>
+                            <div class="layui-form-mid layui-word-aux">
+                                    <span id="profit">0</span>
+
+                                    <span class="x-red" id="tips"></span>
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                        </label>
+                        <button  class="layui-btn" onclick="modifyrecording()" id="modifyrecording">
+                            确认修改
+                        </button>
+                    </div>
+              </div>
+            </div>
+        </div>
+       
+    </body>
+<script>
+
+$(function()
+{
+    $("#modifyrecording").hide();
+$("#date").blur(function()
+{
+    getProfit();
+});
+    
+$("#ordering").blur(function()
+{
+    if($("#ordering").val()=="")
+    {
+        $("#ordering").val()
+    }
+    getProfit();
+});
+$("#ordering").focus(function()
+{
+    if($("#ordering").val()=="0")
+    {
+        $("#ordering").val("");
+    }
+});
+
+    
+$("#menber").blur(function()
+{
+    if($("#menber").val()=="")
+    {
+        $("#menber").val("0");
+    }
+    getProfit();
+});
+$("#menber").focus(function()
+{
+    if($("#menber").val()=="0")
+    {
+        $("#menber").val("");
+    }
+});
+
+$("#takeaway").blur(function()
+{
+    if($("#takeaway").val()=="")
+    {
+        $("#takeaway").val("0");
+    }
+    getProfit();
+});
+$("#takeaway").focus(function()
+{
+    if($("#takeaway").val()=="0")
+    {
+        $("#takeaway").val("");
+    }
+});
+
+$("#dine").blur(function()
+{
+    if($("#dine").val()=="")
+    {
+        $("#dine").val("0");
+    }
+    getProfit();
+});
+$("#dine").focus(function()
+{
+    if($("#dine").val()=="0")
+    {
+        $("#dine").val("");
+    }
+});
+
+$("#pay").blur(function()
+{
+    if($("#pay").val()=="")
+    {
+        $("#pay").val("0");
+    }
+    getProfit();
+});
+$("#pay").focus(function()
+{
+    if($("#pay").val()=="0")
+    {
+        $("#pay").val("");
+    }
+});
+
+});
+</script>
+</html>

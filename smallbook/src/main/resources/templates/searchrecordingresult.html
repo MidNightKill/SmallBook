@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+<head>
+    <meta charset="UTF-8">
+    <title>主页面</title>
+    <link rel="stylesheet" href="./xadmin/css/font.css">
+    <link rel="stylesheet" href="./xadmin/css/xadmin.css">
+    <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+    <script type="text/javascript" src="./jquery/jquery-3.3.1.js"></script>
+    <script src="./xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script src="./scripts/main.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./xadmin/js/xadmin.js"></script>
+</head>
+    <body>
+        <div class="x-nav">
+          <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">账目查询</a>
+            <a>
+              <cite>查询结果</cite></a>
+          </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="./searchrecordingbymap.html" title="以折线图查看">
+                以折线图查看</a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                            <table class="layui-table" id="wyviewcount">
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script>
+
+        layui.use('table', function(){
+            var table = layui.table;
+
+            table.render({
+                elem: '#wyviewcount'
+                ,url:'../getsearchresult'
+                ,title: '账目数据表'
+                // ,width:"100%"
+                ,cols: [
+                    [
+                        // {field:'number',title:"",align:"center",width:100,templet:"#number"},
+                        {field:'date',title:"日期",width:100,align:"center"}
+                        ,{field:'ordering',title:"预定",align:"center"}
+                        ,{field:'menber',title:"会员",align:"center"}
+                        ,{field:'dine',title:"堂食",align:"center"}
+                        ,{field:'takeaway',title:"外供",align:"center"}
+                        ,{field:'income',title:"总收入",align:"center"}
+                        ,{field:'pay',title:"支出",align:"center"}
+                        ,{field:'profit',title:"利润",align:"center"}
+                    ]
+                ],
+                done: function (res, curr, count) {
+                    // $("[data-field='income']").children().each(function(){
+                    //     if($(this).text()=='0'){
+                    //         $(this).text("未使用");
+                    //     }else if($(this).text()=='1'){
+                    //         $(this).text("使用中");
+                    //     }
+                    //     else if($(this).text()=='2'){
+                    //         $(this).text("弃用");
+                    //     };
+                    // });
+                }
+            });
+        });
+
+
+    </script>
+
+<script type="text/html" id="number">
+    {{d.LAY_TABLE_INDEX+1}}
+</script>
+<script>
+  
+</script>
+</html>
